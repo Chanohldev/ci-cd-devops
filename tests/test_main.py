@@ -9,7 +9,8 @@ project_dir = test_dir.parent
 # Agrega el directorio 'src' al sys.path
 src_dir = project_dir / 'src'
 sys.path.insert(0, str(src_dir))
-import main # noqa
+import main  # noqa
+
 
 class TestMathOperation(unittest.TestCase):
     def test_add(self):
