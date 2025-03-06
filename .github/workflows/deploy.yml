@@ -46,7 +46,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest
+          python -m unittest
 
   deploy:
     needs: test
