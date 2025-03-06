@@ -15,7 +15,7 @@ jobs:
           echo "SonarQube Scan check passed" | tee -a audit.log
           echo "SonarQube complete at $(date)" | tee -a audit.log
       - name: Upload SonarQube results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sonarqube-results
           path: audit.log
