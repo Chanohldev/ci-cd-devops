@@ -10,9 +10,9 @@ jobs:
     name: SonarQube
     runs-on: ubuntu-latest
     steps:
-      - name: SonarQube Scan
+      - name: Placeholder - SonarQube Scan
         run: echo "SonarQube Scan check passed"
-        
+
   lint:
     name: Linting
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
           flake8 .
 
   test:
-    needs: lint
+    needs: [sonar,lint]
     name: Run test
     runs-on: ubuntu-latest
 
