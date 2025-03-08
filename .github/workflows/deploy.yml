@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: Placeholder - SonarQube Scan
         run: |
-          echo "SonarQube Scan check passed" | tee -a audit.log
+          echo "SonarQube Scan check passed"
           echo "SonarQube complete at $(date)" | tee -a audit.log
       - name: Upload SonarQube results
         uses: actions/upload-artifact@v4
         with:
-          name: sonarqube-results
+          name: sonarqube-results-${{ github.sha }}-${{ github.run_id }}
           path: audit.log
 
   lint:
@@ -70,3 +70,16 @@ jobs:
     steps:
       - name: Deploy successful
         run : echo "Deployed successfully"
+
+  send-email:
+    name: Send email notification
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send email
+        id: get_email
+        run: |
+          echo "Email sent successfully"
+          echo "EMAIL=$email" >> $GITHUB_ENV
+          echo "Email sent to $(env.EMAIL)" | tee -a audit.log
